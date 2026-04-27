@@ -66,11 +66,11 @@ export default function DashboardPage() {
   
   // Use null or undefined for loading states to avoid false negatives in UI
   const avgUptimeValue = (isLoading || !sites) ? null : (totalSites > 0
-    ? (sitesArray.reduce((sum, s) => sum + (s.uptime_24h || 0), 0) / totalSites).toFixed(2)
+    ? (sitesArray.reduce((sum, s) => sum + Number(s.uptime_24h || 0), 0) / totalSites).toFixed(2)
     : "0")
     
   const avgResponseTimeValue = (isLoading || !sites) ? null : (totalSites > 0
-    ? Math.round(sitesArray.reduce((sum, s) => sum + (s.avg_response_time_24h || 0), 0) / totalSites)
+    ? Math.round(sitesArray.reduce((sum, s) => sum + Number(s.avg_response_time_24h || 0), 0) / totalSites)
     : 0)
 
   if (error) {

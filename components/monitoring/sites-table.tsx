@@ -31,9 +31,9 @@ export function SitesTable({ sites, onDelete }: SitesTableProps) {
     return `${ms}ms`
   }
 
-  const formatUptime = (uptime: number | null | undefined) => {
+  const formatUptime = (uptime: number | string | null | undefined) => {
     if (uptime === null || uptime === undefined) return "-"
-    return `${uptime.toFixed(2)}%`
+    return `${Number(uptime).toFixed(2)}%`
   }
 
   const formatDate = (dateString: string | undefined) => {
@@ -90,7 +90,7 @@ export function SitesTable({ sites, onDelete }: SitesTableProps) {
               <StatusBadge isUp={site.last_check?.is_up ?? false} />
             </TableCell>
             <TableCell>
-              <span className={site.uptime_24h && site.uptime_24h >= 99 ? "text-success font-medium" : ""}>
+              <span className={site.uptime_24h && Number(site.uptime_24h) >= 99 ? "text-success font-medium" : ""}>
                 {formatUptime(site.uptime_24h)}
               </span>
             </TableCell>

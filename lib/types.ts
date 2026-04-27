@@ -61,8 +61,8 @@ export interface Incident {
 
 export interface SiteWithStats extends Site {
   last_check?: HealthCheck
-  uptime_24h?: number
-  avg_response_time_24h?: number
+  uptime_24h?: number | string
+  avg_response_time_24h?: number | string
 }
 
 export interface CheckResult {
