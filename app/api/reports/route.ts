@@ -28,7 +28,10 @@ export async function GET(request: NextRequest) {
       `
     }
     
-    return NextResponse.json(reports)
+    return NextResponse.json(reports.map(r => ({
+      ...r,
+      uptime_percentage: r.uptime_percentage !== null ? Number(r.uptime_percentage) : null,
+    })))
   } catch (error) {
     console.error("Error fetching reports:", error)
     return NextResponse.json({ error: "Failed to fetch reports" }, { status: 500 })

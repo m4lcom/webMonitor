@@ -152,9 +152,9 @@ export default function ReportDetailPage({ params }: PageProps) {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
           <StatCard
             title="Uptime"
-            value={`${report.uptime_percentage?.toFixed(2)}%`}
+            value={`${Number(report.uptime_percentage || 0).toFixed(2)}%`}
             icon={Activity}
-            trend={report.uptime_percentage >= 99 ? "up" : report.uptime_percentage >= 95 ? "neutral" : "down"}
+            trend={Number(report.uptime_percentage) >= 99 ? "up" : Number(report.uptime_percentage) >= 95 ? "neutral" : "down"}
           />
           <StatCard
             title="Tiempo Respuesta Promedio"
@@ -236,8 +236,8 @@ export default function ReportDetailPage({ params }: PageProps) {
               <p>
                 Durante el periodo de <strong>{monthName}</strong>, el sitio{" "}
                 <strong>{report.site_name}</strong> registro un uptime de{" "}
-                <strong className={report.uptime_percentage >= 99 ? "text-success" : ""}>
-                  {report.uptime_percentage?.toFixed(2)}%
+                <strong className={Number(report.uptime_percentage) >= 99 ? "text-success" : ""}>
+                  {Number(report.uptime_percentage || 0).toFixed(2)}%
                 </strong>{" "}
                 con un tiempo de respuesta promedio de{" "}
                 <strong>{report.avg_response_time_ms}ms</strong>.

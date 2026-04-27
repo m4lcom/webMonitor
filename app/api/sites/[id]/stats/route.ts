@@ -67,9 +67,23 @@ export async function GET(
     `
     
     return NextResponse.json({
-      daily: dailyStats,
-      hourly: hourlyStats,
-      overall: overallStats[0] || {},
+      daily: dailyStats.map(s => ({
+        ...s,
+        uptime: s.uptime !== null ? Number(s.uptime) : null,
+        avg_response_time: s.avg_response_time !== null ? Number(s.avg_response_time) : null,
+      })),
+      hourly: hourlyStats.map(s => ({
+        ...s,
+        uptime: s.uptime !== null ? Number(s.uptime) : null,
+        avg_response_time: s.avg_response_time !== null ? Number(s.avg_response_time) : null,
+      })),
+      overall: overallStats[0] ? {
+        ...overallStats[0],
+        uptime: overallStats[0].uptime !== null ? Number(overallStats[0].uptime) : null,
+        avg_response_time: overallStats[0].avg_response_time !== null ? Number(overallStats[0].avg_response_time) : null,
+        min_response_time: overallStats[0].min_response_time !== null ? Number(overallStats[0].min_response_time) : null,
+        max_response_time: overallStats[0].max_response_time !== null ? Number(overallStats[0].max_response_time) : null,
+      } : {},
     })
   } catch (error) {
     console.error("Error fetching stats:", error)

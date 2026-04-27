@@ -169,13 +169,13 @@ export default function ReportsPage() {
                       </TableCell>
                       <TableCell>
                         <span className={
-                          report.uptime_percentage >= 99 
+                          Number(report.uptime_percentage) >= 99 
                             ? "text-success font-medium" 
-                            : report.uptime_percentage >= 95 
+                            : Number(report.uptime_percentage) >= 95 
                               ? "" 
                               : "text-destructive"
                         }>
-                          {report.uptime_percentage?.toFixed(2)}%
+                          {Number(report.uptime_percentage || 0).toFixed(2)}%
                         </span>
                       </TableCell>
                       <TableCell>{report.avg_response_time_ms || "-"}ms</TableCell>

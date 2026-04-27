@@ -30,7 +30,7 @@ export function UptimeChart({ dailyStats, title = "Uptime Diario" }: UptimeChart
         day: "2-digit",
         month: "short",
       }),
-      uptime: stat.uptime || 0,
+      uptime: Number(stat.uptime || 0),
       checks: stat.total_checks,
     }))
 
@@ -81,7 +81,7 @@ export function UptimeChart({ dailyStats, title = "Uptime Diario" }: UptimeChart
                       <div className="bg-popover border rounded-lg p-2 shadow-md">
                         <p className="text-sm font-medium">{payload[0].payload.date}</p>
                         <p className="text-sm text-muted-foreground">
-                          Uptime: {uptime.toFixed(2)}%
+                          Uptime: {Number(uptime).toFixed(2)}%
                         </p>
                         <p className="text-xs text-muted-foreground">
                           {payload[0].payload.checks} checks

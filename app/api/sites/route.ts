@@ -40,7 +40,11 @@ export async function GET() {
       ORDER BY s.created_at DESC
     `
     
-    return NextResponse.json(sites)
+    return NextResponse.json(sites.map((s: any) => ({
+      ...s,
+      uptime_24h: s.uptime_24h !== null ? Number(s.uptime_24h) : null,
+      avg_response_time_24h: s.avg_response_time_24h !== null ? Number(s.avg_response_time_24h) : null,
+    })))
   } catch (error) {
     console.error("Error fetching sites:", error)
     return NextResponse.json({ error: "Failed to fetch sites" }, { status: 500 })
