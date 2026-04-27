@@ -15,9 +15,9 @@ import {
   ExternalLink, 
   Activity, 
   Clock, 
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
+  TriangleAlert,
+  CircleCheck,
+  CircleX,
   Shield
 } from "lucide-react"
 
@@ -73,7 +73,7 @@ export default function SiteDetailPage({ params }: PageProps) {
       <div className="min-h-screen flex items-center justify-center">
         <Card className="max-w-md">
           <CardContent className="py-8 text-center">
-            <AlertTriangle className="size-12 mx-auto text-destructive mb-4" />
+            <TriangleAlert className="size-12 mx-auto text-destructive mb-4" />
             <h2 className="text-lg font-semibold mb-2">Sitio no encontrado</h2>
             <Link href="/">
               <Button>Volver al dashboard</Button>
@@ -148,7 +148,7 @@ export default function SiteDetailPage({ params }: PageProps) {
           <StatCard
             title="Errores HTTP"
             value={(overall?.error_4xx_count || 0) + (overall?.error_5xx_count || 0)}
-            icon={XCircle}
+            icon={CircleX}
             description={`4xx: ${overall?.error_4xx_count || 0} / 5xx: ${overall?.error_5xx_count || 0}`}
           />
           <StatCard
@@ -190,9 +190,9 @@ export default function SiteDetailPage({ params }: PageProps) {
                   >
                     <div className="flex items-center gap-3">
                       {check.is_up ? (
-                        <CheckCircle className="size-4 text-success" />
+                        <CircleCheck className="size-4 text-success" />
                       ) : (
-                        <XCircle className="size-4 text-destructive" />
+                        <CircleX className="size-4 text-destructive" />
                       )}
                       <span className="text-sm">
                         {new Date(check.checked_at).toLocaleString("es")}

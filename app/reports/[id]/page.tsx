@@ -12,8 +12,8 @@ import {
   ArrowLeft, 
   Activity, 
   Clock, 
-  AlertTriangle,
-  XCircle,
+  TriangleAlert,
+  CircleX,
   Download,
   Mail
 } from "lucide-react"
@@ -78,7 +78,7 @@ export default function ReportDetailPage({ params }: PageProps) {
       <div className="min-h-screen flex items-center justify-center">
         <Card className="max-w-md">
           <CardContent className="py-8 text-center">
-            <AlertTriangle className="size-12 mx-auto text-destructive mb-4" />
+            <TriangleAlert className="size-12 mx-auto text-destructive mb-4" />
             <h2 className="text-lg font-semibold mb-2">Informe no encontrado</h2>
             <Link href="/reports">
               <Button>Volver a informes</Button>
@@ -171,7 +171,7 @@ export default function ReportDetailPage({ params }: PageProps) {
           <StatCard
             title="Errores HTTP"
             value={report.error_4xx_count + report.error_5xx_count}
-            icon={XCircle}
+            icon={CircleX}
             description={`4xx: ${report.error_4xx_count} / 5xx: ${report.error_5xx_count}`}
             trend={(report.error_4xx_count + report.error_5xx_count) === 0 ? "up" : "down"}
           />
@@ -197,7 +197,7 @@ export default function ReportDetailPage({ params }: PageProps) {
           <Card className="mb-8">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="size-5 text-warning" />
+                <TriangleAlert className="size-5 text-warning" />
                 Incidentes ({reportData.incidents.length})
               </CardTitle>
             </CardHeader>

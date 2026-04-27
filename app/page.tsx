@@ -12,7 +12,7 @@ import {
   Activity, 
   Globe, 
   Clock, 
-  AlertTriangle, 
+  TriangleAlert, 
   Plus,
   RefreshCw,
   FileText
@@ -78,7 +78,7 @@ export default function DashboardPage() {
       <div className="min-h-screen flex items-center justify-center">
         <Card className="max-w-md">
           <CardContent className="py-8 text-center">
-            <AlertTriangle className="size-12 mx-auto text-destructive mb-4" />
+            <TriangleAlert className="size-12 mx-auto text-destructive mb-4" />
             <h2 className="text-lg font-semibold mb-2">Error al cargar datos</h2>
             <p className="text-muted-foreground mb-4">
               No se pudieron cargar los sitios. Verifica tu conexion.
